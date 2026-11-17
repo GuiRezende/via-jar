@@ -1,0 +1,22 @@
+# Credenciais e configurações locais
+.env
+.env.*
+!.env.example
+.local-ca/
+/docker-compose.local-ca.yml
+
+# Maven
+/target/
+
+# Dados gerados pela aplicação
+/data/
+
+# IDEs e sistema operacional
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,14 @@
+.git
+.idea
+.vscode
+*.iml
+**/target
+**/node_modules
+frontend/
+data/
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+*.log

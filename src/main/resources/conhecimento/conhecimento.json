@@ -1,0 +1,272 @@
+[
+  {
+    "id": "saudacao",
+    "pergunta": "Olá",
+    "resposta": "Olá! Sou o Via.jar, seu assistente de planejamento de viagens. Você já possui um destino em mente ou prefere descobrir novos lugares?"
+  },
+  {
+    "id": "descobrir_destinos",
+    "pergunta": "Quero descobrir novos lugares",
+    "resposta": "Vamos encontrar um destino que combine com você! O que mais te encanta em uma viagem: praias, natureza, cultura, gastronomia, aventura ou simplesmente descansar?"
+  },
+  {
+    "id": "destino_indefinido",
+    "pergunta": "Ainda não sei para onde viajar",
+    "resposta": "Podemos descobrir juntos! Você prefere explorar lugares dentro do Brasil ou viver uma experiência internacional?"
+  },
+  {
+    "id": "destinos_diferentes",
+    "pergunta": "Quero conhecer lugares diferentes",
+    "resposta": "Que tal fugir dos destinos tradicionais? Você prefere cidades pouco exploradas, paisagens naturais ou experiências culturais autênticas?"
+  },
+  {
+    "id": "destino_surpresa",
+    "pergunta": "Quero ser surpreendido",
+    "resposta": "Que tal descobrir um lugar fora da sua lista habitual? Você prefere relaxar, viver uma aventura ou conhecer uma cultura diferente?"
+  },
+  {
+    "id": "destinos_nacionais",
+    "pergunta": "Quero viajar pelo Brasil",
+    "resposta": "Imagine explorar praias nordestinas, cidades históricas, chapadas ou regiões serranas. Qual desses cenários mais desperta sua curiosidade?"
+  },
+  {
+    "id": "destinos_internacionais",
+    "pergunta": "Quero viajar para outro país",
+    "resposta": "Você prefere conhecer a Europa, explorar a América do Sul, descobrir a Ásia ou está aberto a sugestões?"
+  },
+  {
+    "id": "destinos_europa",
+    "pergunta": "Quero conhecer a Europa",
+    "resposta": "Você se imagina explorando cidades históricas, paisagens de montanhas, praias mediterrâneas ou grandes metrópoles?"
+  },
+  {
+    "id": "destinos_america_sul",
+    "pergunta": "Quero conhecer a América do Sul",
+    "resposta": "Que tal explorar os Andes, as vinícolas da Argentina, a Patagônia ou cidades históricas do Peru? Qual experiência mais combina com você?"
+  },
+  {
+    "id": "destinos_asia",
+    "pergunta": "Quero conhecer a Ásia",
+    "resposta": "A Ásia reúne tradições, gastronomia, praias tropicais e grandes metrópoles. Qual dessas experiências você gostaria de viver?"
+  },
+  {
+    "id": "natureza",
+    "pergunta": "Gosto de natureza",
+    "resposta": "Imagine explorar paisagens incríveis! Você prefere trilhas, cachoeiras, montanhas, florestas ou observar animais?"
+  },
+  {
+    "id": "calor",
+    "pergunta": "Gosto de calor",
+    "resposta": "Você prefere praias, piscinas naturais ou passeios ao ar livre?"
+  },
+  {
+    "id": "frio",
+    "pergunta": "Prefiro destinos frios",
+    "resposta": "Você gosta de cidades serranas, montanhas ou experiências gastronômicas em lugares de clima mais ameno?"
+  },
+  {
+    "id": "praia",
+    "pergunta": "Quero uma viagem de praia",
+    "resposta": "Você prefere uma praia tranquila de águas cristalinas, um resort com toda a estrutura ou um destino animado com vida noturna?"
+  },
+  {
+    "id": "gastronomia",
+    "pergunta": "Quero conhecer a gastronomia local",
+    "resposta": "Viajar também é descobrir novos sabores! Você prefere restaurantes tradicionais, mercados locais, vinícolas ou experiências gastronômicas sofisticadas?"
+  },
+  {
+    "id": "cultura",
+    "pergunta": "Gosto de passeios culturais",
+    "resposta": "Que tal descobrir histórias e tradições diferentes? Você prefere museus, monumentos, centros históricos ou manifestações culturais?"
+  },
+  {
+    "id": "aventura",
+    "pergunta": "Quero uma viagem de aventura",
+    "resposta": "Você prefere mergulho, trilhas, rafting, escalada ou atividades aéreas? Há alguma restrição física que devemos considerar?"
+  },
+  {
+    "id": "descanso",
+    "pergunta": "Quero descansar nas férias",
+    "resposta": "Você prefere uma pousada na natureza, um resort à beira-mar ou uma pequena cidade tranquila?"
+  },
+  {
+    "id": "cachoeiras",
+    "pergunta": "Quero conhecer cachoeiras",
+    "resposta": "A Chapada Diamantina e a Chapada dos Veadeiros podem servir de inspiração. Você prefere trilhas desafiadoras ou cachoeiras de fácil acesso?"
+  },
+  {
+    "id": "montanhas",
+    "pergunta": "Gosto de montanhas",
+    "resposta": "Você prefere caminhadas com belas paisagens, contemplação ou hospedagens aconchegantes?"
+  },
+  {
+    "id": "neve",
+    "pergunta": "Quero conhecer a neve",
+    "resposta": "Você prefere praticar esportes de inverno ou simplesmente aproveitar as paisagens e o clima?"
+  },
+  {
+    "id": "vida_noturna",
+    "pergunta": "Gosto de festas e vida noturna",
+    "resposta": "Você prefere festivais, bares, música ao vivo ou cidades com festas à beira-mar?"
+  },
+  {
+    "id": "trilhas",
+    "pergunta": "Gosto de fazer trilhas",
+    "resposta": "Você prefere caminhadas leves ou percursos mais desafiadores? Conte também de onde pretende sair e quando gostaria de viajar."
+  },
+  {
+    "id": "acampamento",
+    "pergunta": "Quero acampar",
+    "resposta": "Você prefere camping estruturado ou uma experiência mais próxima da natureza? Conte de qual cidade pretende sair."
+  },
+  {
+    "id": "cachoeiras_acessiveis",
+    "pergunta": "Prefiro cachoeiras de fácil acesso",
+    "resposta": "Vamos priorizar passeios com pouca caminhada. De qual cidade você pretende sair? Se quiser, já informe o período e o orçamento da viagem."
+  },
+  {
+    "id": "viagem_romantica",
+    "pergunta": "Quero uma viagem romântica",
+    "resposta": "Vocês preferem praias tranquilas, cidades charmosas, experiências gastronômicas ou hospedagens nas montanhas?"
+  },
+  {
+    "id": "viagem_familia",
+    "pergunta": "Quero viajar em família",
+    "resposta": "Vocês preferem parques temáticos, praias, resorts ou atividades em contato com a natureza?"
+  },
+  {
+    "id": "viagem_sozinho",
+    "pergunta": "Quero viajar sozinho",
+    "resposta": "Você prefere conhecer novas pessoas, explorar cidades ou aproveitar momentos de tranquilidade?"
+  },
+  {
+    "id": "viagem_amigos",
+    "pergunta": "Quero viajar com amigos",
+    "resposta": "Vocês procuram aventura, festas, praias ou experiências culturais?"
+  },
+  {
+    "id": "lua_de_mel",
+    "pergunta": "Quero planejar minha lua de mel",
+    "resposta": "Vocês sonham com praias paradisíacas, cidades românticas ou experiências especiais a dois?"
+  },
+  {
+    "id": "orcamento",
+    "pergunta": "Tenho um orçamento limitado",
+    "resposta": "Qual é o valor total disponível, em que moeda e para quantas pessoas?"
+  },
+  {
+    "id": "duracao",
+    "pergunta": "Só tenho poucos dias para viajar",
+    "resposta": "Quantos dias você terá e em qual período pretende viajar?"
+  },
+  {
+    "id": "viagem_economica",
+    "pergunta": "Quero viajar gastando pouco",
+    "resposta": "Você aceita considerar destinos menos turísticos, períodos de baixa temporada e hospedagens econômicas?"
+  },
+  {
+    "id": "viagem_luxo",
+    "pergunta": "Quero uma viagem de luxo",
+    "resposta": "Você prefere resorts exclusivos, hotéis sofisticados, gastronomia refinada ou passeios privativos?"
+  },
+  {
+    "id": "all_inclusive",
+    "pergunta": "Quero viajar para um resort all inclusive",
+    "resposta": "Você prefere resorts no Brasil, no Caribe ou está aberto a outros destinos?"
+  },
+  {
+    "id": "mochilao",
+    "pergunta": "Quero fazer um mochilão",
+    "resposta": "Você pretende conhecer várias cidades de um mesmo país ou atravessar diferentes países?"
+  },
+  {
+    "id": "viagem_curta",
+    "pergunta": "Quero aproveitar um feriado prolongado",
+    "resposta": "Você prefere destinos próximos da sua cidade ou aceita viajar de avião?"
+  },
+  {
+    "id": "acessibilidade",
+    "pergunta": "Preciso de uma viagem acessível",
+    "resposta": "Quais necessidades devemos considerar, como mobilidade reduzida, transporte adaptado ou hospedagem acessível?"
+  },
+  {
+    "id": "ajuda",
+    "pergunta": "Como você pode me ajudar?",
+    "resposta": "Posso ajudar a descobrir destinos, organizar roteiros e sugerir a distribuição do orçamento conforme suas preferências. Quer começar escolhendo um tipo de viagem ou já tem um destino em mente?"
+  },
+  {
+    "id": "agradecimento",
+    "pergunta": "Obrigado",
+    "resposta": "Por nada! Se quiser continuar explorando destinos ou planejar uma viagem, estou à disposição."
+  },
+  {
+    "id": "despedida",
+    "pergunta": "Até logo",
+    "resposta": "Até a próxima! Quando quiser planejar sua próxima aventura, estarei aqui."
+  },
+  {
+    "id": "coleta_destino",
+    "pergunta": "Quero viajar, mas ainda não tenho destino",
+    "resposta": "Você já tem alguma região em mente ou prefere receber sugestões conforme suas preferências?"
+  },
+  {
+    "id": "coleta_origem",
+    "pergunta": "Quero viajar, mas ainda não informei minha origem",
+    "resposta": "De qual cidade você pretende sair?"
+  },
+  {
+    "id": "coleta_periodo",
+    "pergunta": "Ainda não informei quando quero viajar",
+    "resposta": "Em qual período pretende viajar? Pode informar uma data ou um mês."
+  },
+  {
+    "id": "coleta_duracao",
+    "pergunta": "Ainda não informei a duração da viagem",
+    "resposta": "Quantos dias pretende passar viajando?"
+  },
+  {
+    "id": "coleta_viajantes",
+    "pergunta": "Ainda não informei a quantidade de viajantes",
+    "resposta": "Quantas pessoas participarão da viagem?"
+  },
+  {
+    "id": "coleta_orcamento",
+    "pergunta": "Ainda não informei o orçamento",
+    "resposta": "Qual é o orçamento total disponível para a viagem?"
+  },
+  {
+    "id": "coleta_moeda",
+    "pergunta": "Ainda não informei a moeda do orçamento",
+    "resposta": "O orçamento informado está em reais (BRL) ou em outra moeda?"
+  },
+  {
+    "id": "coleta_pendencias",
+    "pergunta": "Quero planejar uma viagem, mas faltam algumas informações",
+    "resposta": "Já tenho parte das informações! Para continuar, preciso que você me informe: {camposPendentes}."
+  },
+  {
+    "id": "cache_roteiro_encontrado",
+    "pergunta": "Quero viajar para um destino que já possui um roteiro salvo",
+    "resposta": "Encontrei um planejamento de {origem} para {destino}, período {periodo}, duração de {duracao} dias, {viajantes} viajantes e orçamento de {orcamento}."
+  },
+  {
+    "id": "cache_reutilizar",
+    "pergunta": "Quero aproveitar o roteiro anterior",
+    "resposta": "Perfeito! Vou recuperar o planejamento salvo para você."
+  },
+  {
+    "id": "cache_personalizar",
+    "pergunta": "Quero modificar o roteiro anterior",
+    "resposta": "Claro! O que gostaria de modificar no planejamento: período, duração, orçamento, viajantes ou preferências?"
+  },
+  {
+    "id": "cache_sem_resultado",
+    "pergunta": "Não existe um roteiro salvo compatível com a viagem",
+    "resposta": "Ainda não encontrei um roteiro compatível. Vou utilizar as informações fornecidas para preparar um novo planejamento."
+  },
+  {
+    "id": "confirmacao_planejamento",
+    "pergunta": "Todas as informações da viagem estão completas",
+    "resposta": "Já tenho as informações necessárias para planejar sua viagem de {origem} para {destino}, com {viajantes} viajantes, duração de {duracao} dias e orçamento de {orcamento}. Vou preparar seu roteiro."
+  }
+]

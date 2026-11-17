@@ -1,0 +1,96 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 20s
+
+  models:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["ollama", "pull"]
+    command: ["${OLLAMA_CHAT_MODEL:-qwen3.5:2b}"]
+    restart: "no"
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: viajar
+      POSTGRES_USER: viajar
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-viajar}"
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U viajar -d viajar"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+    image: via-jar-backend:1.0.0
+    restart: unless-stopped
+    depends_on:
+      models:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${VIAJAR_HOST_PORT:-8080}:8080"
+    environment:
+      GOOGLE_API_KEY: "${GOOGLE_API_KEY:-}"
+      GEMINI_CHAT_MODEL: "${GEMINI_CHAT_MODEL:-gemini-3.5-flash-lite}"
+      OLLAMA_BASE_URL: http://ollama:11434
+      OLLAMA_CHAT_MODEL: "${OLLAMA_CHAT_MODEL:-qwen3.5:2b}"
+      OLLAMA_MAX_TOKENS: "${OLLAMA_MAX_TOKENS:-4096}"
+      EXTRACTOR_PROVIDER: "${EXTRACTOR_PROVIDER:-gemini}"
+      INFERENCE_PROVIDER: "${INFERENCE_PROVIDER:-gemini}"
+      JUDGE_PROVIDER: "${JUDGE_PROVIDER:-gemini}"
+      AI_FALLBACK_ENABLED: "${AI_FALLBACK_ENABLED:-false}"
+      CACHE_THRESHOLD: "${CACHE_THRESHOLD:-0.75}"
+      KNOWLEDGE_THRESHOLD: "${KNOWLEDGE_THRESHOLD:-0.78}"
+      HISTORICO_AVALIACOES_FILE: /app/data/historico-avaliacoes.json
+      LOCAL_EMBEDDING_CACHE_DIR: /app/data/models
+      LOG_LEVEL_EXTRATOR: "${LOG_LEVEL_EXTRATOR:-INFO}"
+      WIKIDATA_MCP_URL: "${WIKIDATA_MCP_URL:-https://wd-mcp.wmcloud.org}"
+
+      # PostgreSQL
+      DB_URL: jdbc:postgresql://postgres:5432/viajar
+      DB_USERNAME: viajar
+      DB_PASSWORD: "${POSTGRES_PASSWORD:-viajar}"
+    volumes:
+      - ./data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+    image: via-jar-frontend:1.0.0
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "127.0.0.1:${VIAJAR_FRONTEND_PORT:-5173}:5173"
+    environment:
+      VIAJAR_BACKEND_URL: http://backend:8080
+      VIAJAR_DOCKER_WATCH: "false"
+      VITE_API_URL: ""
+
+volumes:
+  ollama-data:
+  postgres-data:

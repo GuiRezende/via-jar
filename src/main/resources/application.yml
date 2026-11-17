@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    import:
+      - classpath:application-ollama.yml
+      - classpath:application-gemini.yml
+
+  ai:
+    model:
+      chat: none
+      embedding: none
+      "embedding.text": none
+
+    mcp:
+      client:
+        initialized: false
+        request-timeout: 15s
+        streamable-http:
+          connections:
+            wikidata:
+              url: ${WIKIDATA_MCP_URL:https://wd-mcp.wmcloud.org}
+              endpoint: /mcp/
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/viajar}
+    username: ${DB_USERNAME:viajar}
+    password: ${DB_PASSWORD:viajar}
+    driver-class-name: org.postgresql.Driver
+
+via:
+  cache-threshold: ${CACHE_THRESHOLD:0.75}
+  knowledge-threshold: ${KNOWLEDGE_THRESHOLD:0.78}
+  historico-avaliacoes-file: ${HISTORICO_AVALIACOES_FILE:data/historico-avaliacoes.json}
+  embedding:
+    cache-dir: ${LOCAL_EMBEDDING_CACHE_DIR:data/models}
+
+  ai:
+    extractor: ${EXTRACTOR_PROVIDER:gemini}
+    inference: ${INFERENCE_PROVIDER:gemini}
+    judge: ${JUDGE_PROVIDER:gemini}
+    fallback: ${AI_FALLBACK_ENABLED:false}
+
+logging:
+  level:
+    br.edu.ifba.via.service.ExtratorDadosViagem: ${LOG_LEVEL_EXTRATOR:INFO}
