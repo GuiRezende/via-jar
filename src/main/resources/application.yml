@@ -50,3 +50,6 @@ via:
 logging:
   level:
     br.edu.ifba.via.service.ExtratorDadosViagem: ${LOG_LEVEL_EXTRATOR:INFO}
+    org.springframework.ai.mcp: DEBUG
+    io.modelcontextprotocol: DEBUG
+    br.edu.ifba.via.service.WikidataService: DEBUG

@@ -22,9 +22,9 @@ function carregarConfiguracao(configuracao) {
   ]))
 }
 const SUGESTOES = [
-  'Quero planejar uma viagem saindo de Salvador',
-  'Gosto de natureza e quero descansar',
-  'Quero conhecer Recife em janeiro de 2027',
+  "Quero viajar de Salvador para Lisboa em setembro de 2027, por 7 dias, para duas pessoas, com orçamento de R$ 20.000.",
+  "Quero conhecer praias com águas cristalinas no Nordeste.",
+  "Quero conhecer destinos com gastronomia típica e experiências culinárias."
 ]
 const CATEGORIAS = {
   transporte: 'Transporte',

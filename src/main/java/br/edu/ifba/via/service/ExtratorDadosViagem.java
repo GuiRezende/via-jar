@@ -3,6 +3,7 @@ package br.edu.ifba.via.service;
 import br.edu.ifba.via.dto.DadosViagemExtraidos;
 import br.edu.ifba.via.helper.TextoHelper;
 import br.edu.ifba.via.service.AvaliadorRoteiroService.MensagemConversa;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +27,7 @@ final class ExtratorDadosViagem {
 
     private static final Set<String> MOEDAS_SUPORTADAS = Set.of("BRL", "USD", "EUR");
     private static final String CAMINHO_PROMPT = "prompt-extrator.md";
+    private static final int MAX_TENTATIVAS = 3;
     private final ObjectMapper conversorJson = new ObjectMapper().enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS)
             .disable(DeserializationFeature.ACCEPT_FLOAT_AS_INT);
     private final String promptExtrator = carregarPrompt();
@@ -52,28 +54,47 @@ final class ExtratorDadosViagem {
             contexto.put("historico", historico);
             contexto.put(DESTINO_DELEGADO, destinoDelegado);
 
-            String resposta = consultarLlm.apply(promptExtrator, conversorJson.writeValueAsString(contexto));
-            if (resposta == null || resposta.isBlank()) throw new IllegalStateException("O extrator não retornou dados");
+            String contextoJson = conversorJson.writeValueAsString(contexto);
+            for (int tentativa = 1; ; tentativa++) {
+                String resposta = consultarLlm.apply(promptExtrator, contextoJson);
+                log.debug("Extrator - Resposta recebida: {}", resposta);
 
-            log.debug("Extrator - Resposta recebida: {}", resposta);
-
-            var json = conversorJson.readTree(TextoHelper.normalizarJson(resposta));
-            if (!(json instanceof ObjectNode objeto)) throw new IllegalStateException("Resposta inválida do extrator");
-
-            // A delegação é metadado de controle, não um campo do DTO da viagem.
-            JsonNode delegacao = objeto.remove(DESTINO_DELEGADO);
-            if (delegacao != null && !delegacao.isNull() && !delegacao.isBoolean()) {
-                throw new IllegalStateException("Delegação do destino inválida");
+                try {
+                    return interpretarResposta(resposta);
+                } catch (JsonProcessingException | IllegalArgumentException e) {
+                    log.warn("Extrator - Resposta inválida na tentativa {}/{} | Erro: {}",
+                            tentativa, MAX_TENTATIVAS, e.getClass().getSimpleName());
+                    if (tentativa >= MAX_TENTATIVAS) throw e;
+                }
             }
-            DadosViagemExtraidos dados = conversorJson.treeToValue(objeto, DadosViagemExtraidos.class);
-            Map<String, Object> resultado = validarDadosExtraidos(dados);
-            if (delegacao != null && delegacao.isBoolean() && delegacao.booleanValue() && !resultado.containsKey(DESTINO)) {
-                resultado.put(DESTINO_DELEGADO, true);
-            }
-            return resultado;
         } catch (Exception e) {
             throw new IllegalStateException("Não foi possível realizar a extração semântica", e);
         }
+    }
+
+    // Valida a resposta da LLM antes de retornar os dados extraídos.
+    private Map<String, Object> interpretarResposta(String resposta) throws JsonProcessingException {
+        if (resposta == null || resposta.isBlank()) {
+            throw new IllegalArgumentException("O extrator não retornou dados");
+        }
+
+        var json = conversorJson.readTree(TextoHelper.normalizarJson(resposta));
+        if (!(json instanceof ObjectNode objeto)) {
+            throw new IllegalArgumentException("Resposta inválida do extrator");
+        }
+
+        // A delegação é metadado de controle, não um campo do DTO da viagem.
+        JsonNode delegacao = objeto.remove(DESTINO_DELEGADO);
+        if (delegacao != null && !delegacao.isNull() && !delegacao.isBoolean()) {
+            throw new IllegalArgumentException("Delegação do destino inválida");
+        }
+
+        DadosViagemExtraidos dados = conversorJson.treeToValue(objeto, DadosViagemExtraidos.class);
+        Map<String, Object> resultado = validarDadosExtraidos(dados);
+        if (delegacao != null && delegacao.isBoolean() && delegacao.booleanValue() && !resultado.containsKey(DESTINO)) {
+            resultado.put(DESTINO_DELEGADO, true);
+        }
+        return resultado;
     }
 
     // Mantém compatibilidade com as chamadas anteriores.

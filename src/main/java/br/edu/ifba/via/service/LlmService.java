@@ -30,6 +30,13 @@ public class LlmService {
         tokens.acumular(consumo);
         var metadados = respostaLlm.getResult().getMetadata();
         log.info("LLM - Provedor: {} | FinishReason: {}", provedor, metadados == null ? null : metadados.getFinishReason());
-        return respostaLlm.getResult().getOutput().getText();
+        String resposta = respostaLlm.getResult().getOutput().getText();
+
+        log.info("LLM - Resposta bruta:\n{}", resposta);
+        log.info("LLM - Consumo: {}", consumo);
+        log.info("LLM - Tamanho da resposta: {}",
+                resposta == null ? 0 : resposta.length());
+
+        return resposta;
     }
 }
